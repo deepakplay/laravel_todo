@@ -7,11 +7,13 @@ use Illuminate\Http\Request;
 class TodoController extends Controller
 {
     public function index(){
-    	return view('welcome')->with('todos', Todo::all());
+      $data['todos'] = Todo::paginate(5);
+    	return view('welcome', $data);
     }
 
    	public function get(Todo $todo){
-   		return view('todo')->with('todo', $todo);
+      $data['todo']= $todo;
+   		return view('todo', $data);
    	}
 
    	public function store(Request $request){
