@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class TodoController extends Controller
 {
     public function index(){
-      $data['todos'] = Todo::paginate(5);
+      $data['todos'] = Todo::orderBy('id', 'desc')->paginate(5);
     	return view('welcome', $data);
     }
 
@@ -41,7 +41,6 @@ class TodoController extends Controller
       ]);
       $todo->name=  $request->input('name');
       $todo->description= $request->input('description');
-      $todo->completed = false;
       $todo->save();
       session()->flash('success', "Todo Updated Successfully");
       return redirect('/');
