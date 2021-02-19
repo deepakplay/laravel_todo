@@ -7,12 +7,13 @@ use Illuminate\Http\Request;
 class TodoController extends Controller
 {
     public function index(){
-      $data['todos'] =  Todo::orderBy('id','DESC')->get();
-    	return view('welcome',$data);
+      $data['todos'] = Todo::orderBy('id', 'desc')->paginate(5);
+    	return view('welcome', $data);
     }
 
    	public function get(Todo $todo){
-   		return view('todo')->with('todo', $todo);
+      $data['todo']= $todo;
+   		return view('todo', $data);
    	}
 
    	public function store(Request $request){
@@ -40,7 +41,6 @@ class TodoController extends Controller
       ]);
       $todo->name=  $request->input('name');
       $todo->description= $request->input('description');
-      $todo->completed = false;
       $todo->save();
       session()->flash('success', "Todo Updated Successfully");
       return redirect('/');

@@ -52,13 +52,13 @@
                 font-size: 1.5rem;
                 font-weight: bold;
             }
-            a{
+            .lists a, .links a{
                 text-decoration: none;
                 color:#444;
                 margin-left: 20px;
             }
 
-            a:hover{
+            .lists a:hover, .links a:hover{
                 color:#F33;
             }
             @yield('style')
