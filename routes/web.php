@@ -14,16 +14,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'TodoController@index')->name('index');
-
-Route::get('/create', function(){
-	return view('create');
-})->name('create');
+Route::get('/create', 'TodoController@create')->name('create');
 Route::post('/store', 'TodoController@store')->name('store');
-
-Route::get('/todo/{todo}', 'TodoController@get');
-
-Route::get('/edit/{todo}', 'TodoController@edit');
-Route::post('/update/{todo}', 'TodoController@update');
-
-Route::get('/delete/{todo}', 'TodoController@destroy');
-Route::get('/complete/{todo}', 'TodoController@complete');
+Route::get('/todo/{todo}', 'TodoController@get')->name('get');
+Route::get('/edit/{todo}', 'TodoController@edit')->name('edit');
+Route::post('/update/{todo}', 'TodoController@update')->name('update');
+Route::get('/delete/{todo}', 'TodoController@destroy')->name('delete');
+Route::get('/complete/{todo}', 'TodoController@complete')->name('complete');

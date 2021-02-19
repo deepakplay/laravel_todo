@@ -72,8 +72,8 @@ Todo - {{$todo->name}}
         	<h4 class="todo_head">{{$todo->name}}</h4>
         	<div class="todo_content">{{$todo->description}}</div>
             <div class="btn-grp">
-                <a class="btn edit" href="/edit/{{$todo->id}}">Edit</a>
-                <a class="btn delete" href="/delete/{{$todo->id}}">Delete</a>
+                <a class="btn edit" href="{{route('edit', $todo->id)}}">Edit</a>
+                <a class="btn delete" href="{{route('delete', $todo->id)}}">Delete</a>
             </div>
         </div>
     </div>

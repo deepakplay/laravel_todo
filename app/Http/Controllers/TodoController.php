@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use App\Todo;
 use Illuminate\Http\Request;
 
+use App\Http\Requests\TodoRequest;
+
 class TodoController extends Controller
 {
     public function index(){
@@ -11,16 +13,16 @@ class TodoController extends Controller
     	return view('welcome', $data);
     }
 
+    public function create(){
+      return view('create');
+    }
+
    	public function get(Todo $todo){
       $data['todo']= $todo;
    		return view('todo', $data);
    	}
 
-   	public function store(Request $request){
-   		$this->validate($request, [
-   			'name' => 'required|min:6|max:15',
-   			'description' => 'required|max:150',
-   		]);
+   	public function store(TodoRequest $request){
    		$todo = new Todo();
    		$todo->name=  $request->input('name');
    		$todo->description= $request->input('description');
@@ -34,11 +36,7 @@ class TodoController extends Controller
    		return view('edit')->with('todo', $todo);
    	}
 
-    public function update(Request $request, Todo $todo){
-      $this->validate($request, [
-        'name' => 'required|min:6|max:15',
-        'description' => 'required|max:150',
-      ]);
+    public function update(TodoRequest $request, Todo $todo){
       $todo->name=  $request->input('name');
       $todo->description= $request->input('description');
       $todo->save();

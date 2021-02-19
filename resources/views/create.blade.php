@@ -66,10 +66,10 @@
 
 @section('content')
     <div class="content">
-            <form method="POST" action="/store" class="todo_container">
-                <div class="todo_head">
-                    Todo Create                
-                </div>
+            <form method="POST" action="{{route('store')}}" class="todo_container">
+                @csrf
+                <div class="todo_head">Todo Create</div>
+
                 @if($errors->any())
                     <ul class="errorList">
                         @foreach($errors->all() as $error)
@@ -77,7 +77,8 @@
                         @endforeach
                     </ul>
                 @endif
-                @csrf
+
+                
                 <input type="text" name="name" placeholder="Enter the name" class="@error('name') error @enderror"> 
                 <textarea rows="4" cols="40" name="description" placeholder="Enter the description" class="@error('description') error @enderror"></textarea>
                 <input type="submit" value="Create">

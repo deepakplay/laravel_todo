@@ -116,9 +116,9 @@ Todo - Deepak
                 <li class="@if($todo->completed) list_completed @endif">
                     {{$todo->name}}
                     <span class="btn-group">
-                        <a href="todo/{{$todo->id}}" class="todo_view">View</a>
+                        <a href="{{route('get', $todo->id)}}" class="todo_view">View</a>
                         @if(!$todo->completed)
-                            <a href="complete/{{$todo->id}}" class="todo_complete">Done</a>
+                            <a href="{{route('complete', $todo->id)}}" class="todo_complete">Done</a>
                         @endif
                     </span>
                 </li>

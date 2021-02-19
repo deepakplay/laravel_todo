@@ -66,7 +66,7 @@
 
 @section('content')
     <div class="content">
-            <form method="POST" action="/update/{{$todo->id}}" class="todo_container">
+            <form method="POST" action="{{route('update', $todo->id)}}"  class="todo_container">
                 @csrf
 
                 <div class="todo_head">
