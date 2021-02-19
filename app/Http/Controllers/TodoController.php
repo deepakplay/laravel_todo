@@ -7,7 +7,8 @@ use Illuminate\Http\Request;
 class TodoController extends Controller
 {
     public function index(){
-    	return view('welcome')->with('todos', Todo::all());
+      $data['todos'] =  Todo::orderBy('id','DESC')->get();
+    	return view('welcome',$data);
     }
 
    	public function get(Todo $todo){

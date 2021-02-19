@@ -4,6 +4,7 @@
 Todo - Deepak
 @endsection
 
+
 @section('style')
 .content{
     width:400px; 
@@ -76,6 +77,7 @@ ul{
 @endsection
 
 @section('content')
+
     <div class="content">
         @if(session()->has('success'))
             <span class="success">{{session()->get('success')}}</span>

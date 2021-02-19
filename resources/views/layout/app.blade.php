@@ -69,8 +69,8 @@
         <div class="flex-center position-ref full-height">
             <div class="top-left links">
                 <div class="title">Todo List</div>
-                <a href="{{ url('/') }}">Home</a>
-                <a href="{{ url('/create') }}">Create Todo</a>
+                <a href="{{ route('index') }}">Home</a>
+                <a href="{{ route('create') }}">Create Todo</a>
             </div>
             @yield('content')
         </div>
